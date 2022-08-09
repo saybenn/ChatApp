@@ -1,0 +1,610 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.loginContainer {
+    background: rgb(250, 250, 250);
+    height: 100vh;
+    padding: 10rem 0;
+
+}
+
+.loginBubble {
+    margin: 0 auto ;
+    width: 50%;
+    border: 1px solid rgb(240, 240, 240);
+    background: #fff;
+    padding: 2rem 2rem 3rem;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0px 0px 6px 1px rgb(154, 154, 154);
+}
+
+.intro {
+    font-size: 3rem;
+}
+
+.introImg {
+    height: 125px;
+    width: 125px;
+    display: block;
+    margin: 1rem auto 2rem;
+}
+
+
+.accent {
+    color: rgb(52, 103, 255);
+    display: inline;
+}
+
+.mute {
+    opacity: .55;
+}
+
+.bold {
+    font-weight: 600;
+}
+
+.loginBtn {
+    cursor: pointer;
+    transition: all .25s ease-in-out;
+    margin: 1.5rem 0;
+    padding: .5rem;
+    font-family: 'Roboto';
+    font-size: 1.1rem;
+    background: rgb(250, 250, 250);
+    border-radius: 10px;
+    border: 1px solid rgb(115, 115, 115);
+}
+
+.loginBtn:hover {
+    transform:scale(1.1);
+}
+
+.container, .chatScreen {
+    display: flex;
+    min-height: 100vh;
+}
+
+.error {
+    color: red;
+    font-family: 'Roboto';
+}
+
+//Sidebar
+.sideBar {
+    display: flex;
+    flex-direction: column;
+    min-width: 40%;
+    max-width: 40%;
+    border-right: 1px rgb(224, 224, 224) solid;
+    background: rgb(255, 255, 255);
+     
+    &Half {
+        position: fixed;
+        min-width: 40%;
+        max-width: 40%; 
+        min-height: 122px;
+        max-height: 122px; 
+        background: white;       
+        z-index: 10;
+        border-right: 1px rgb(224, 224, 224) solid;
+
+    }
+    
+    //User Photo, Email, Settings
+    .sideBarTop {
+ 
+        display: flex;
+        align-items: center;
+        flex: 2;
+        height: 72px;
+        padding: 2rem 1rem;
+        gap: 0 20px;
+        
+        .userBubble {
+            height: 60px;
+            width: 60px;
+        }
+
+        .opacHover {
+            cursor: pointer;
+            transition: opacity .25s ease-in-out;
+                       
+            &:hover {
+                opacity: .8;
+            }
+        }
+
+        .userEmail {
+            display: inline;
+            font-size: 1.1rem;
+            flex: 1;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 150px;
+            overflow: hidden;
+        }
+
+
+    }
+
+    //Start chat button
+    .startNewChat {
+        flex: 1;
+        background: rgb(225, 225, 225);
+        min-height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-transform: uppercase;
+        font-size: 1.2rem;
+        text-align: center;
+        cursor: pointer;
+        transition: opacity .25s ease-in-out;
+                       
+            &:hover {
+                background: rgb(203, 203, 203);
+
+            }
+    }
+
+    //List of Friends to Chat With
+    .chatList {
+        margin-top: 122px;
+        flex: 3;
+        overflow: scroll;
+
+        .chatFriend {
+            padding: .7rem .5rem .7rem .7rem;
+            cursor: pointer;
+            transition: background .25s ease-in-out;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            gap: 0 10px;
+            border: 1px solid rgb(248, 248, 248);
+            
+            &Photo {
+                width: 40px;
+                height: 40px;
+                border-radius: 100%;
+            }
+
+            &:first-child {
+                flex: 1;
+            }
+
+            p {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            padding-bottom: .2rem;
+            margin-bottom: .3rem;
+            }
+
+            &Preview {
+            flex: 4;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 100px;
+            overflow: hidden;
+            }
+
+            &Minor {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-end;
+            }
+
+           
+                       
+            &:hover {
+                background: rgb(240, 240, 240);
+            }
+        }
+    }
+}
+
+//Chat Slide
+.chatSlide {
+    position: fixed;
+    flex: 5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 60%;
+    right: 0;
+    
+    //Chat Header
+    &Top {
+        max-height: 72px;
+        min-height: 72px;
+        background: white;
+        padding: .5rem;
+        background: white;
+        border-bottom: 1px solid rgb(248, 248, 248);
+        flex: 2;
+        width: 60%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-align: center;
+        position: fixed;
+
+        .backArrow {
+            cursor: pointer;
+        }
+
+        .chatImage {
+            height: 55px;
+            width: 55px;
+            border-radius: 100%;
+        }
+
+        .chatSlideAvatar:hover {
+            cursor: pointer;
+        }
+    }
+   
+    //Chat messages go here
+    .chatLanding {
+        overflow: scroll;
+        width: 100%;
+        height: 100vh;
+        background-image: url('../public/images/wallpaper.jpg');
+
+        div {
+            margin: 90px 0 55px;
+            
+            // Message Blocks/Rows
+            .messageUser {
+                display: flex;
+                justify-content: flex-start;
+                flex-direction: row-reverse;
+                
+                img {
+                    margin: 0 .7rem 0 0;
+                }
+
+                div {
+
+                    max-width: 60%;
+                    background: rgb(125, 198, 240);
+                    border-radius: 1rem 1rem 0rem 1rem;
+                    text-align: right;
+                }
+            }
+
+            .messageOther {
+                display: flex;
+                justify-content: flex-start;
+
+                img {
+                    margin: 0 0 0 .7rem;
+                }
+
+                 div {
+                    background: rgb(125, 240, 135);
+                    border-radius: 1rem 1rem 1rem 0rem;
+                }
+            } 
+
+            div {
+                align-items: flex-end;
+                margin: .3rem 0rem;
+
+                // Message Block
+                div {
+                    padding: .8rem;
+                    margin: 0 .6rem;
+                    max-width: 60%;
+
+                    .sender {
+                        font-weight: 600;
+                        margin-bottom: .5rem;
+                    }
+
+                    .messageContent {
+                        max-width: 100%;
+                        object-fit: contain;
+                        margin: 0;
+                        padding:0;
+                        
+                       
+                        .message {
+                            margin-bottom: .5rem;
+                        }
+
+                        .messageImage {
+                            max-height: 100%;
+                            width: fit-content;
+                            max-width: 100%;
+                        }
+
+                        .time {
+                            color: rgb(83, 83, 83);
+                            font-size: .8rem;
+                        }
+                    }
+                    
+                }
+            }
+
+            .messageThumbnail {
+                cursor: pointer;
+                height: 38px;
+                width: 38px;
+                border-radius: 100%;
+            }
+
+        }
+            
+   
+    }
+
+    //Inputs for messaging
+    .messageArea {
+        flex: 1;
+        width: 60%;
+        position: fixed;
+        bottom: 0;
+        max-height: 50px;
+               border: 1px solid rgb(248, 248, 248);
+        background: white;
+      
+        form {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            
+            input[type=file] {
+                display: none;
+            }
+            
+            .messageActions {
+                width: 15%;
+                &:hover {
+                    cursor: pointer;
+                    color: #333;
+                }
+            }
+
+            .messageInput {
+            padding: .7rem;
+            width: 70%;
+            height: 100%;
+            border: none;
+            font-size: 1.2rem;
+            border-right: 1px solid rgb(248, 248, 248);
+            border-left: 1px solid rgb(248, 248, 248);
+
+            &:focus-visible {
+                outline:none;
+            }
+
+            
+            }
+            .hiddenBtn {
+                display: none;
+            }
+
+        }
+        
+    }
+}
+
+
+//Chat Info/Settings
+.info {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: rgb(234, 234, 234);
+
+    &Head {
+    flex: 1;
+    background: rgb(41, 86, 154);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    padding: 0 2rem;
+
+        &Top {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            width: 100%;
+
+            .backArrow:hover {
+                cursor: pointer;
+            }
+
+            .groupDetails {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                width: 100%;
+                flex: 2;
+                
+                .chatAvatar {
+                    border: 3px solid rgb(237, 237, 237);
+                    background-color: rgb(28, 60, 108);
+                }
+ 
+                p {
+                    margin: .4rem;
+                }
+
+                .chatName {
+                    font-size: 1.3rem;
+                    margin-top: .7rem;
+                }
+            }
+
+            
+        }
+
+        &Bottom {
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+
+         
+
+            &IconGroup {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                width: 100%;
+
+                svg:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    .chatParticipants {
+        background: #333;
+        flex: 2;
+
+        &Card {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: .4rem 0;
+            border-top: 1px solid white;
+            border-bottom: 1px solid white;
+            
+           
+            p, .removeIcon {
+                color: white;
+                width: 40%;
+            }
+
+            svg:hover {
+                cursor: pointer;
+            }
+            
+            
+        }
+    }
+
+    .modal {
+        &Body {
+            form {
+                width: 70%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+               button {
+                margin-top: .7rem;
+               }
+            }
+        }
+    }
+}
+
+//Input Modal
+
+.modal {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    font-family: 'Roboto';
+    z-index: 50;
+
+
+    &Body {
+        position: absolute;
+        top: 25%;
+        left: 26%;
+        z-index: 100;
+        height: 25%;
+        width: 50%;
+        min-width: 250px;
+        background: rgb(125, 198, 240);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        padding: 2rem;
+        text-align: center;
+        border-radius: 15px;
+
+        input {
+            border-radius: 5px;
+            font-family: 'Roboto';
+            border: none;
+            padding: .3rem;
+            width: 60%;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        button {
+            border: none;
+            font-weight: 600;
+            padding: .3rem .4rem;
+            font-family: 'Roboto';
+            background: rgb(252, 252, 252);
+            border-radius: 4px;
+        }
+    }
+
+    &Overlay {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background: black;
+        opacity: .7;
+    }
+}
+
+.blankSlide {
+    flex: 5;
+    min-height: 100vh;
+    position: fixed;
+    width: 60%;
+    right: 0;
+    background-image: url('../public/images/wallpaper.jpg');
+}
+
+//Media Query
+@media only screen and (max-width: 550px) {
+  .blankSlide {
+    display: none;
+  }
+
+  .sideBar, .sideBarHalf {
+        width: 100vw;
+        max-width: 100%;
+  }
+
+  .chatSlide {
+    width: 100%;
+    z-index: 50;
+     &Top {
+        width: 100%;
+     }
+
+   .messageArea {
+    width: 100%;
+ }
+}
+
+
+}
