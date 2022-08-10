@@ -29,7 +29,7 @@ const ChatMessages = ({ image, user, sender, timestamp, message, avatar }) => {
         <div className={styles.messageContent}>
           <p className={styles.message}>{message}</p>
           {image && (
-            <a target="_blank" href={image}>
+            <a rel="noreferrer" target="_blank" href={image}>
               <Image
                 alt={image}
                 layout="fixed"
