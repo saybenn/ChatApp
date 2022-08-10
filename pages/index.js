@@ -13,7 +13,7 @@ import BlankSlide from "../components/BlankSlide";
 export default function Home({ data }) {
   const router = useRouter();
 
-  if (!data) {
+  if (!data.user) {
     router.push("/login");
   } else {
     return (
