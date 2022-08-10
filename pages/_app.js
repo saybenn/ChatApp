@@ -3,8 +3,10 @@ import { getSession, SessionProvider } from "next-auth/react";
 import { database } from "../firebaseConfig";
 import { useEffect } from "react";
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
+import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
+  const router = useRouter();
   useEffect(() => {
     const getTheSession = async () => {
       const session = await getSession();
@@ -21,6 +23,8 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
             merge: true,
           }
         );
+      } else {
+        router.push("/login");
       }
     };
     getTheSession();
