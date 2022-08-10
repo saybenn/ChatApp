@@ -9,7 +9,7 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.clientSecret!,
     }),
   ],
-  secret: process.env.JWT_SECRET,
+  secret: process.env.SECRET,
 };
 
 export default NextAuth(authOptions);

@@ -28,7 +28,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
       }
     };
     getTheSession();
-  }, [session]);
+  }, [session, router]);
 
   return (
     <SessionProvider session={session}>
