@@ -159,13 +159,7 @@ const ChatSlide = ({ messages, chat, user }) => {
           </p>
           <p>
             <span className={styles.muted}>Last Active: </span>
-            {chat.users.length > 2 && chat.lastActive
-              ? new Date(chat.lastActive.seconds * 1000).toLocaleDateString()
-              : recipientData
-              ? new Date(
-                  recipientData.lastSeen.seconds * 1000
-                ).toLocaleDateString()
-              : "No Activity"}
+            {new Date(chat.lastActive.seconds * 1000).toLocaleDateString()}
           </p>
         </div>
         <div className={styles.chatSlideAvatar}>

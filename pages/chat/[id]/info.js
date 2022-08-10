@@ -200,6 +200,7 @@ const Info = ({ data, rawChat }) => {
       "Are you sure you want to delete the chat? This is an irreversible action."
     );
     await deleteDoc(chatRef);
+    router.push("/");
   };
 
   const getParticipants = () => {
