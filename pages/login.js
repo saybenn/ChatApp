@@ -1,6 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/ChatApp.module.scss";
 import Link from "next/link";
+import Image from "next/image";
 
 const Login = () => {
   return (
@@ -13,7 +14,7 @@ const Login = () => {
         <h1 className={styles.intro}>
           Welcome to <span className={styles.accent}>ChatApp</span>
         </h1>
-        <img
+        <Image
           className={styles.introImg}
           src="https://www.freeiconspng.com/thumbs/live-chat-icon/live-chat-icon-13.png"
           alt="ChatApp Logo"

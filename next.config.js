@@ -9,6 +9,8 @@ const nextConfig = {
       "www.i.pinimg.com",
       "www.randomuser.me",
       "www.upload.wikimedia.org",
+      "lh3.googleusercontent.com",
+      "firebasestorage.googleapis.com",
     ],
   },
 };

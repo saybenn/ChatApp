@@ -207,6 +207,7 @@ const Info = ({ data, rawChat }) => {
       return value.data().users.map((participant) => {
         return (
           <ChatParticipants
+            key={participant.email ? participant.email : participant}
             participant={participant}
             removeUserPrep={removeUserPrep}
             handleShow={handleShow}
