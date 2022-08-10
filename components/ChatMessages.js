@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import styles from "../styles/ChatApp.module.scss";
 
@@ -28,14 +29,17 @@ const ChatMessages = ({ image, user, sender, timestamp, message, avatar }) => {
         <div className={styles.messageContent}>
           <p className={styles.message}>{message}</p>
           {image && (
-            <Image
-              alt={image}
-              height={125}
-              layout="fixed"
-              width={125}
-              className={styles.messageImage}
-              src={image}
-            />
+            <a target="_blank" href={image}>
+              <Image
+                alt={image}
+                layout="fixed"
+                quality={100}
+                width={150}
+                height={150}
+                className={styles.messageImage}
+                src={image}
+              />
+            </a>
           )}
           <p className={[styles.time]}>
             {new Date(timestamp).toLocaleDateString()}

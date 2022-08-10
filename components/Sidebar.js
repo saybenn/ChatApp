@@ -5,7 +5,14 @@ import getRegisteredUsers from "../utils/getRegisteredUser";
 import getNonRegisteredUsers from "../utils/getNonRegisteredUser";
 import { signOut } from "next-auth/react";
 import { useCollection } from "react-firebase-hooks/firestore";
-import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  getDocs,
+  orderBy,
+  query,
+  where,
+} from "firebase/firestore";
 import styles from "../styles/ChatApp.module.scss";
 import Avatar from "@mui/material/Avatar";
 import ChatFriends from "./ChatFriends";
@@ -21,10 +28,7 @@ const Sidebar = ({ user }) => {
   const [message, setMessage] = useState("");
 
   const chatRef = collection(database, "chats");
-  const userChatRef = query(
-    chatRef,
-    where("owner", "array-contains", user.email)
-  );
+  const userChatRef = query(chatRef, orderBy("lastActive", "desc"));
 
   const [chatsSnapshot, value] = useCollection(userChatRef);
   const usersRef = collection(database, "users");
@@ -192,12 +196,7 @@ const Sidebar = ({ user }) => {
         {/* Map Chat Friends into ChatFriends Component */}
         {chatsSnapshot ? (
           chatsSnapshot.docs
-            .sort((chatA, chatB) => {
-              return (
-                chatB.data().lastActive.seconds -
-                chatA.data().lastActive.seconds
-              );
-            })
+            .filter((chat) => chat.data().owner.includes(user.email))
             .map((chat) => {
               return (
                 <ChatFriends

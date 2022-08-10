@@ -224,6 +224,7 @@
     
     //Chat Header
     &Top {
+        z-index: 5;
         max-height: 72px;
         min-height: 72px;
         background: white;
@@ -237,6 +238,7 @@
         justify-content: space-between;
         text-align: center;
         position: fixed;
+        top:0;
 
         .backArrow {
             cursor: pointer;
@@ -326,11 +328,15 @@
                             max-height: 100%;
                             width: fit-content;
                             max-width: 100%;
+                            &:hover {
+                                cursor: pointer;
+                            }
                         }
 
                         .time {
-                            color: rgb(83, 83, 83);
+                            color: rgb(44, 44, 44);
                             font-size: .8rem;
+                            margin-top: .5rem;
                         }
                     }
                     
