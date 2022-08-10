@@ -16,6 +16,8 @@ const Login = () => {
         </h1>
         <Image
           className={styles.introImg}
+          height={125}
+          width={125}
           src="https://www.freeiconspng.com/thumbs/live-chat-icon/live-chat-icon-13.png"
           alt="ChatApp Logo"
         />
