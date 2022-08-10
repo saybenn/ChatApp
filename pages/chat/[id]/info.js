@@ -264,6 +264,7 @@ const Info = ({ data, rawChat }) => {
               <AvatarGroup spacing="small" max={3}>
                 {participants.map((participant) => (
                   <Avatar
+                    key={participant.name}
                     sx={{ width: 56, height: 56 }}
                     src={participant.photoURL}
                   ></Avatar>
@@ -273,7 +274,9 @@ const Info = ({ data, rawChat }) => {
               <AvatarGroup spacing="small" max={3}>
                 {userEmails &&
                   userEmails.map((email) => (
-                    <Avatar sx={{ width: 56, height: 56 }}>{email[0]}</Avatar>
+                    <Avatar key={email} sx={{ width: 56, height: 56 }}>
+                      {email[0]}
+                    </Avatar>
                   ))}
               </AvatarGroup>
             )}

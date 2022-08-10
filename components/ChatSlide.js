@@ -179,7 +179,7 @@ const ChatSlide = ({ messages, chat, user }) => {
           ) : recipients.length > 1 ? (
             <AvatarGroup onClick={chatInfo} spacing="small" max={3}>
               {recipients.map((recip) => (
-                <Avatar>{recip[0]}</Avatar>
+                <Avatar key={recip}>{recip[0]}</Avatar>
               ))}
             </AvatarGroup>
           ) : recipientData ? (

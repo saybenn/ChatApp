@@ -221,7 +221,7 @@ const Sidebar = ({ user }) => {
           <div className={styles.modalBody}>
             <h2>
               Enter an email address for the user you would like to chat with.
-              If making a group, seperate addresses with a ','.
+              If making a group, seperate addresses with a &apos,&apos.
             </h2>
             {message && <p className={styles.error}>{message}</p>}
             <input

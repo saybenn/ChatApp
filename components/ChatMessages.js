@@ -10,6 +10,7 @@ const ChatMessages = ({ image, user, sender, timestamp, message, avatar }) => {
       }
     >
       <Image
+        alt={sender}
         height={40}
         layout="intrinsic"
         width={40}
@@ -28,12 +29,12 @@ const ChatMessages = ({ image, user, sender, timestamp, message, avatar }) => {
           <p className={styles.message}>{message}</p>
           {image && (
             <Image
+              alt={image}
               height={125}
               layout="fixed"
               width={125}
               className={styles.messageImage}
               src={image}
-              alt=""
             />
           )}
           <p className={[styles.time]}>
