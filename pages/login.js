@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "../styles/ChatApp.module.scss";
-import Link from "next/link";
+import { signIn } from "next-auth/react";
 import Image from "next/image";
 
 const Login = () => {
@@ -21,9 +21,16 @@ const Login = () => {
           src="https://www.freeiconspng.com/thumbs/live-chat-icon/live-chat-icon-13.png"
           alt="ChatApp Logo"
         />
-        <Link href="/api/auth/signin">
-          <a className={styles.loginBtn}>Sign In With Google</a>
-        </Link>
+        <button
+          onClick={() =>
+            signIn("google", {
+              callbackUrl: "http://localhost:3000/",
+            })
+          }
+          className={styles.loginBtn}
+        >
+          Sign In With Google
+        </button>
       </div>
     </div>
   );

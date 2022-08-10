@@ -3,6 +3,7 @@ import { database } from "../firebaseConfig";
 import chatAlreadyExists from "../utils/chatAlreadyExists";
 import getRegisteredUsers from "../utils/getRegisteredUser";
 import getNonRegisteredUsers from "../utils/getNonRegisteredUser";
+import { signOut } from "next-auth/react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
 import styles from "../styles/ChatApp.module.scss";
@@ -30,10 +31,6 @@ const Sidebar = ({ user }) => {
   const [usersSnapshot, val] = useCollection(usersRef);
 
   //Functions
-  const signOutHandler = () => {
-    router.push("/api/auth/signout");
-  };
-
   const handleShow = () => {
     if (show) {
       setShow(false);
@@ -168,14 +165,18 @@ const Sidebar = ({ user }) => {
           {user.image ? (
             <Avatar
               className={[styles.opacHover, styles.userBubble].join(" ")}
-              onClick={signOutHandler}
+              onClick={() =>
+                signOut({ callbackUrl: "http://localhost:3000/login" })
+              }
               sx={{ width: 60, height: 60 }}
               src={user.image}
             />
           ) : (
             <Avatar
               className={[styles.opacHover, styles.userBubble]}
-              onClick={signOutHandler}
+              onClick={() =>
+                signOut({ callbackUrl: "http://localhost:3000/login" })
+              }
               sx={{ width: 60, height: 60, fontSize: 50 }}
             >
               {user.email[0].toUpperCase()}
