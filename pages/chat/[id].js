@@ -14,11 +14,14 @@ import {
   query,
 } from "firebase/firestore";
 import { database } from "../../firebaseConfig";
+import useWindowSize from "../../utils/useWindowSize";
 
 const Chat = ({ data, chat, messages }) => {
   //format data
   let rawMessage = JSON.parse(messages);
   let chatInfo = JSON.parse(chat);
+  const width = useWindowSize();
+  console.log(width);
   return (
     <div className={styles.chatScreen}>
       <Head>
@@ -28,7 +31,7 @@ const Chat = ({ data, chat, messages }) => {
 
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Sidebar user={data.user} />
+      {width && width > 550 ? <Sidebar user={data.user} /> : <></>}
       <ChatSlide
         key={chat.id}
         chat={chatInfo}

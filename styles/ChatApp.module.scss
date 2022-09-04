@@ -263,7 +263,7 @@
         background-image: url('../public/images/wallpaper.jpg');
 
         div {
-            margin: 90px 0 55px;
+            margin: 90px 0;
             
             // Message Blocks/Rows
             .messageUser {
@@ -593,6 +593,10 @@
     background-image: url('../public/images/wallpaper.jpg');
 }
 
+.translateX {
+    transform: translateX(-100%);
+}
+
 //Media Query
 @media only screen and (max-width: 550px) {
   .blankSlide {
@@ -612,9 +616,25 @@
      }
 
    .messageArea {
-    width: 100%;
+        width: 100%;
+        form {
+            .hiddenBtn {
+                display: inline;
+                border: none;
+                margin: 0 5px;
+                width: 25%;
+                padding: .3rem .7rem;
+                border-radius: 4px;
+                font-size: 1.5rem;
+                font-weight: 500;
+                background: rgb(125, 198, 240);
+                color: rgb(250, 250, 250);
+            }
+        }
+    }
  }
-}
+
+    
 
 
 }

@@ -233,7 +233,7 @@ const ChatSlide = ({ messages, chat, user }) => {
             type="submit"
             disabled={!input}
           >
-            Send Message
+            Send
           </button>
         </form>
       </div>
